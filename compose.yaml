@@ -1,0 +1,38 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    environment:
+      DOMAIN: "https://sub.example.com/path/"
+    volumes:
+      - ./vw-data/:/data/
+    ports:
+      - 8080:80
+  vaultwarden_backup:
+    image: bruceforce/vaultwarden-backup
+    container_name: vaultwarden-backup
+    restart: unless-stopped
+    init: true
+    volumes:
+      - ./vw-data/:/data/
+      - ./vw-backup/backups:/backups/
+      - ./vw-backup/logs:/logs/
+    environment:
+      - BACKUP_DIR=/backups/
+      - LOG_DIR=/logs/
+      - CRON_TIME=0 4 * * *
+      - DELETE_AFTER=30
+      - TIMESTAMP=true
+      - BACKUP_ADD_DATABASE=true
+      - BACKUP_ADD_ATTACHMENTS=true
+      - BACKUP_ADD_CONFIG_JSON=true
+      - BACKUP_ADD_ICON_CACHE=true
+      - BACKUP_ADD_RSA_KEY=true
+      - BACKUP_USE_DEDUPE=true
+      - BACKUP_DIR_PERMISSIONS=755
+      - BACKUP_ON_STARTUP=true
+      - LOG_LEVEL=INFO
+      - UID=vaultwarden
+      - GID=vaultwarden
+      - TZ=Europe/Berlin
