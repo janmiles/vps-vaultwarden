@@ -11,13 +11,13 @@ Virtual Private Server (VPS) Vaultwarden password manager
 ## Initial setup
 
 - Create data and backup directories
-  - `mkdir ~/vw-data`
-  - `mkdir ~/vw-backup/backups`
-  - `mkdir ~/vw-backup/logs`
+  - `mkdir ~/vps-vaultwarden/vw-data`
+  - `mkdir ~/vps-vaultwarden/vw-backup/backups`
+  - `mkdir ~/vps-vaultwarden/vw-backup/logs`
 - Setup Rclone connection for remote backup, e.g. `rclone config create my-nextcloud webdav --all`
 - Setup crontab to trigger remote backup
   - Run `crontab -e`
-  - Add line `30 4 * * * rclone sync ~/vw-backup/backups my-nextcloud:vaultwarden`
+  - Add line `30 4 * * * rclone sync ~/vps-vaultwarden/vw-backup/backups my-nextcloud:vaultwarden`
   - Save and close file
 - Set server domain and app path in `~/vps-vaultwarden/compose.yaml`
 

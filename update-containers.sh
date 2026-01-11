@@ -1,6 +1,6 @@
 #! /bin/bash -e
 
-cd ~
+cd ~/vps-vaultwarden
 
 docker compose pull
 
