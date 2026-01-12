@@ -24,6 +24,10 @@ Run a [Vaultwarden](https://github.com/dani-garcia/vaultwarden) password manager
   - Add line `30 4 * * * rclone sync ~/vps-vaultwarden/vw-backup/backups my-nextcloud:vaultwarden`
   - Save and close file
 - Set server domain and app path in `~/vps-vaultwarden/compose.yaml`
+- Setup ADMIN_TOKEN ([detailed instructions](https://github.com/dani-garcia/vaultwarden/wiki/Enabling-admin-page))
+  - Run `docker run --rm -it vaultwarden/server /vaultwarden hash --preset owasp`
+  - Run `touch ~/vps-vaultwarden/.admin_token.txt && chmod 600 ~/vps-vaultwarden/.admin_token.txt`
+  - Copy the generated Argon2 PHC string starting with `$argon2id` into this file
 
 ## Run application
 
@@ -36,7 +40,6 @@ Run `~/vps-vaultwarden/update-containers.sh`
 ## Restore backups
 
 This is taken from [github.com/Bruceforce/vaultwarden-backup](https://github.com/Bruceforce/vaultwarden-backup?tab=readme-ov-file#restore) with adapted filepaths.
-
 
 ```sh
 # Delete any existing sqlite3 files
