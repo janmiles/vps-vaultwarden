@@ -12,6 +12,15 @@ Run a [Vaultwarden](https://github.com/dani-garcia/vaultwarden) password manager
 - Install Docker and Docker compose
 - Download and install [Rclone](https://rclone.org/)
 
+### NGINX setup
+
+These instructions assume that you are using [NGINX](https://nginx.org/) as webserver and have automatic SSL certificate renewal enabled with [Certbot](https://certbot.eff.org/).
+
+Consult the files in the `/nginx` directory on how to make the Vaultwarden webinterface available on a path of your domain.
+
+- Place /nginx/default.conf at `/etc/nginx/conf.d/default.conf` and change the __TODO__ values inside the file
+- Place /nginx/404.html and nginx/robots.txt in `/usr/share/nginx/html`
+
 ## Initial setup
 
 - Create data and backup directories
