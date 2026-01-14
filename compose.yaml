@@ -14,7 +14,7 @@ services:
     secrets:
       - admin_token
   vaultwarden_backup:
-    image: bruceforce/vaultwarden-backup
+    image: bruceforce/vaultwarden-backup:latest
     container_name: vaultwarden-backup
     restart: unless-stopped
     init: true
@@ -37,8 +37,8 @@ services:
       - BACKUP_DIR_PERMISSIONS=755
       - BACKUP_ON_STARTUP=true
       - LOG_LEVEL=INFO
-      - UID=vaultwarden
-      - GID=vaultwarden
+      - UID=${USERID}
+      - GID=${GROUPID}
       - TZ=Europe/Berlin
 secrets:
   admin_token:
