@@ -1,8 +1,8 @@
 # VPS Vaultwarden
 
-Run a [Vaultwarden](https://github.com/dani-garcia/vaultwarden) password manager with remote backup on your Virtual Private Server (VPS).
+Run a [Vaultwarden](https://github.com/dani-garcia/vaultwarden) password manager with remote backup on your Virtual Private Server (VPS). Tested on Debian 12/ARM64.
 
-:warning: Backups are not encrypted by default!
+:warning: Backups use the default Vaultwarden encryption, but are not additionally encrypted!
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ Run a [Vaultwarden](https://github.com/dani-garcia/vaultwarden) password manager
 
 ### NGINX setup
 
-These instructions assume that you are using [NGINX](https://nginx.org/) as webserver and have automatic SSL certificate renewal enabled with [Certbot](https://certbot.eff.org/).
+These instructions assume that you are using [NGINX](https://nginx.org/) as webserver/reverse proxy and have automatic SSL certificate renewal enabled with [Certbot](https://certbot.eff.org/).
 
 Consult the files in the `/nginx` directory on how to make the Vaultwarden webinterface available on a path of your domain.
 
